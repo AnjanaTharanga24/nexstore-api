@@ -28,8 +28,9 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public OrderDTO saveOrder(OrderDTO orderDTO) {
-
-        return null;
+        Orders orders = modelMapper.map(orderDTO, Orders.class);
+        Orders savedOrder = orderRepository.save(orders);
+        return modelMapper.map(savedOrder, OrderDTO.class);
     }
 
     @Override
