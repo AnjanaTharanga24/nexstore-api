@@ -8,8 +8,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class OrderDTO {
-    private Integer id;
-    private Integer itemId;
-    private String orderDate;
-    private Integer amount;
+    public Integer id;
+    public Integer itemId;
+    public String orderDate;
+    public Integer amount;
 }

@@ -1,9 +1,25 @@
 package com.nexstore.order_manager.controller;
 
+import com.nexstore.order_manager.dto.request.OrderDTO;
+import com.nexstore.order_manager.dto.response.OrderResponse;
+import com.nexstore.order_manager.service.OrderService;
 import lombok.AllArgsConstructor;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @AllArgsConstructor
+@RequestMapping("api/v1/order")
 public class OrderController {
+
+    private OrderService orderService;
+
+    @PostMapping
+    public OrderResponse saveOrder(@RequestBody OrderDTO orderDTO){
+        return orderService.saveOrder(orderDTO);
+    }
+    
+    
 }

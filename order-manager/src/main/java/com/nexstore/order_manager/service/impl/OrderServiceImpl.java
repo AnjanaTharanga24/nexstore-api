@@ -1,6 +1,7 @@
 package com.nexstore.order_manager.service.impl;
 
 import com.nexstore.order_manager.dto.request.OrderDTO;
+import com.nexstore.order_manager.dto.response.OrderResponse;
 import com.nexstore.order_manager.model.Orders;
 import com.nexstore.order_manager.repository.OrderRepository;
 import com.nexstore.order_manager.service.OrderService;
@@ -27,10 +28,26 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public OrderDTO saveOrder(OrderDTO orderDTO) {
-        Orders orders = modelMapper.map(orderDTO, Orders.class);
-        Orders savedOrder = orderRepository.save(orders);
-        return modelMapper.map(savedOrder, OrderDTO.class);
+    public OrderResponse saveOrder(OrderDTO orderDTO) {
+//        Orders orders = new Orders();
+//        orders.setItemId(orderDTO.getItemId());
+//        orders.setAmount(orderDTO.getAmount());
+//        orders.setOrderDate(orderDTO.getOrderDate());
+//        orderRepository.save(orders);
+
+        //can use above code like this using modelmapper
+        Orders orders = modelMapper.map(orderDTO,Orders.class);
+        orderRepository.save(orders);
+
+//        return OrderResponse.builder()
+//                .id(orders.getId())
+//                .itemId(orders.getItemId())
+//                .orderDate(orders.getOrderDate())
+//                .amount(orders.getAmount())
+//                .build();
+
+        OrderResponse response = modelMapper.map(orders,OrderResponse.class);
+        return response;
     }
 
     @Override

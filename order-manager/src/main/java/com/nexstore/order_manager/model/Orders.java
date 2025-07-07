@@ -18,7 +18,7 @@ public class Orders {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    private Integer itemId;
-    private String orderDate;
-    private Integer amount;
+    public Integer itemId;
+    public String orderDate;
+    public Integer amount;
 }
