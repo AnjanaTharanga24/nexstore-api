@@ -4,6 +4,10 @@ import com.nexstore.order_manager.dto.request.OrderDTO;
 import com.nexstore.order_manager.dto.response.OrderResponse;
 import com.nexstore.order_manager.service.OrderService;
 import lombok.AllArgsConstructor;
+
+import java.util.List;
+
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,5 +25,9 @@ public class OrderController {
         return orderService.saveOrder(orderDTO);
     }
     
+    @GetMapping
+    public List<OrderResponse> getAllOrders(){
+    	return orderService.getAllOrders();
+    }
     
 }

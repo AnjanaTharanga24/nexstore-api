@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 @Service
 @Transactional
@@ -22,9 +23,25 @@ public class OrderServiceImpl implements OrderService {
     private ModelMapper modelMapper;
 
     @Override
-    public List<OrderDTO> getAllOrders() {
-        List<Orders> ordersList = orderRepository.findAll();
-        return modelMapper.map(ordersList, new TypeToken<List<OrderDTO>>() {}.getType());
+    public List<OrderResponse> getAllOrders() {
+       List<Orders> foundOrders = orderRepository.findAll();
+       
+//       List<OrderResponse> responses = new ArrayList<>();
+//       for(Orders order : foundOrders) {
+//    	  OrderResponse response = OrderResponse.builder()
+//    	   .id(order.getId())
+//    	   .itemId(order.getItemId())
+//    	   .amount(order.getAmount())
+//    	   .orderDate(order.getOrderDate())
+//    	   .build();
+//    	   
+//    	  responses.add(response);
+//       }
+//       
+//       return responses;
+       
+       // can use model mapper for map foundOrders List to the List of OrdeResponse instead of above code
+       return modelMapper.map(foundOrders, new TypeToken<List<OrderResponse>>(){}.getType());
     }
 
     @Override
@@ -52,6 +69,7 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public OrderDTO updateOrder(OrderDTO orderDTO) {
+    	
         return null;
     }
 

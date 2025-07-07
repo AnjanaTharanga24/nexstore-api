@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface OrderService {
 
-    List<OrderDTO> getAllOrders();
+    List<OrderResponse> getAllOrders();
     OrderResponse saveOrder(OrderDTO orderDTO);
     OrderDTO updateOrder(OrderDTO orderDTO);
     String deleteOrder(Integer orderId);
