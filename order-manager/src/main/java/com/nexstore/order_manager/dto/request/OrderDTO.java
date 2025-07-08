@@ -8,7 +8,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class OrderDTO {
-    public Integer id;
     public Integer itemId;
     public String orderDate;
     public Integer amount;

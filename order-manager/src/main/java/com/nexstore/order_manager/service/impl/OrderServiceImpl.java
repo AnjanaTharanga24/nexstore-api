@@ -5,6 +5,8 @@ import com.nexstore.order_manager.dto.response.OrderResponse;
 import com.nexstore.order_manager.model.Orders;
 import com.nexstore.order_manager.repository.OrderRepository;
 import com.nexstore.order_manager.service.OrderService;
+
+import jakarta.persistence.criteria.Order;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
@@ -14,6 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 @Service
 @Transactional
 @AllArgsConstructor
@@ -68,14 +71,24 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public OrderDTO updateOrder(OrderDTO orderDTO) {
+    public OrderDTO updateOrder(OrderDTO orderDTO ,  Integer id) {
+    	Optional<Orders> foundOrder = orderRepository.findById(id);
+    	
+    	Orders order = foundOrder.get();
+    	
+    	order.setItemId(orderDTO.getItemId());
+    	order.setOrderDate(orderDTO.getOrderDate());
+    	order.setAmount(orderDTO.getAmount());
+    	
+    	Orders savedOrder = orderRepository.save(order);
     	
         return null;
     }
 
     @Override
     public String deleteOrder(Integer orderId) {
-        return null;
+    	orderRepository.deleteById(orderId);
+        return "order deleted successfully";
     }
 
     @Override
