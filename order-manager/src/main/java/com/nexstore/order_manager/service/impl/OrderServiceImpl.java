@@ -71,7 +71,7 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public OrderDTO updateOrder(OrderDTO orderDTO ,  Integer id) {
+    public OrderResponse updateOrder(OrderDTO orderDTO ,  Integer id) {
     	Optional<Orders> foundOrder = orderRepository.findById(id);
     	
     	Orders order = foundOrder.get();
@@ -80,9 +80,11 @@ public class OrderServiceImpl implements OrderService {
     	order.setOrderDate(orderDTO.getOrderDate());
     	order.setAmount(orderDTO.getAmount());
     	
+    	modelMapper.map(orderDTO, order);
+    	
     	Orders savedOrder = orderRepository.save(order);
     	
-        return null;
+        return modelMapper.map(savedOrder, OrderResponse.class);
     }
 
     @Override
@@ -92,7 +94,19 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public OrderDTO getOrderById(Integer orderId) {
-        return null;
+    public OrderResponse getOrderById(Integer orderId) {
+    	Optional<Orders> foundOrder = orderRepository.findById(orderId);
+    	
+    	Orders order = foundOrder.get();
+    	
+    	
+//        return OrderResponse.builder()
+//        		.id(order.getId())
+//        		.amount(order.getAmount())
+//        		.itemId(order.getItemId())
+//        		.orderDate(order.getOrderDate())
+//        		.build();
+        
+        return modelMapper.map(order,OrderResponse.class);
     }
 }

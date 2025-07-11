@@ -10,7 +10,7 @@ public interface OrderService {
 
     List<OrderResponse> getAllOrders();
     OrderResponse saveOrder(OrderDTO orderDTO);
-    OrderDTO updateOrder(OrderDTO orderDTO , Integer id);
+    OrderResponse updateOrder(OrderDTO orderDTO , Integer id);
     String deleteOrder(Integer orderId);
-    OrderDTO getOrderById(Integer orderId);
+    OrderResponse getOrderById(Integer orderId);
 }

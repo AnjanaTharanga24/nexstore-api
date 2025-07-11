@@ -37,4 +37,10 @@ public class OrderController {
     	return orderService.deleteOrder(orderId);
     }
     
+  
+    
+    @GetMapping("/{order-id}")
+    public OrderResponse findOrderById(@PathVariable("order-id") Integer orderId) {
+    	return orderService.getOrderById(orderId);
+    }
 }
