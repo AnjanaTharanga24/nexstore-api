@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -37,7 +38,10 @@ public class OrderController {
     	return orderService.deleteOrder(orderId);
     }
     
-  
+    @PutMapping("/{orderId}")
+   public OrderResponse updateOrder(@PathVariable("{orderId}") Integer orderId, @RequestBody OrderDTO dto) {
+	   return orderService.updateOrder(dto, orderId);
+   }
     
     @GetMapping("/{order-id}")
     public OrderResponse findOrderById(@PathVariable("order-id") Integer orderId) {

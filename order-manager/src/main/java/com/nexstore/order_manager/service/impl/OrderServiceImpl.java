@@ -76,9 +76,9 @@ public class OrderServiceImpl implements OrderService {
     	
     	Orders order = foundOrder.get();
     	
-    	order.setItemId(orderDTO.getItemId());
-    	order.setOrderDate(orderDTO.getOrderDate());
-    	order.setAmount(orderDTO.getAmount());
+//    	order.setItemId(orderDTO.getItemId());
+//    	order.setOrderDate(orderDTO.getOrderDate());
+//    	order.setAmount(orderDTO.getAmount());
     	
     	modelMapper.map(orderDTO, order);
     	
