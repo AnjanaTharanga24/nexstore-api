@@ -1,5 +1,6 @@
 package com.nexstore.product_manager;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -10,4 +11,7 @@ public class ProductManagerApplication {
 		SpringApplication.run(ProductManagerApplication.class, args);
 	}
 
+	public ModelMapper modelMapper(){
+		return new ModelMapper();
+	}
 }
