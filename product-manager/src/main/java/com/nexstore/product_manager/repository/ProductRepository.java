@@ -1,4 +1,7 @@
 package com.nexstore.product_manager.repository;
 
-public interface ProductRepository {
+import com.nexstore.product_manager.model.Product;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface ProductRepository extends JpaRepository<Product, Integer> {
 }
